@@ -1,0 +1,5 @@
+<ul class="goals">
+  @for (goal of goals(); track goal.id){
+    <app-course-goal [text]="goal.text" [icon]="goal.icon" />
+  }
+</ul>
