@@ -25,11 +25,16 @@ const GOALS = [
   },
   {
     id: 4,
+    icon: 'content_copy',
+    text: 'Customize & configure Cypress for your requirements',
+  },
+  {
+    id: 5,
     icon: 'supervisor_account',
     text: 'Learn how to write good tests & follow best practices',
   },
   {
-    id: 5,
+    id: 6,
     icon: 'key',
     text: 'Dive into more complex problems - e.g., user authentication testing',
   }
