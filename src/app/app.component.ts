@@ -54,6 +54,7 @@ export class AppComponent implements OnInit {
         },
       ]
     })
+    this.isAddingTask.set(false);
   }
 
   ngOnInit(): void {

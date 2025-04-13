@@ -39,5 +39,6 @@ export class NewTaskComponent {
       category: chosenCategory,
     };
     this.addTask.emit(taskData);
+    this.form.reset();
   }
 }
