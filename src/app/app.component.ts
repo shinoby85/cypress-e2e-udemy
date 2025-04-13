@@ -1,5 +1,4 @@
-import {Component, effect, OnInit, signal} from '@angular/core';
-import {RouterOutlet} from '@angular/router';
+import {Component, OnInit, signal} from '@angular/core';
 import {HeaderComponent} from './components/header/header.component';
 import {TaskListComponent} from './components/task-list/task-list.component';
 import {TaskControlComponent} from './components/task-control/task-control.component';
@@ -11,7 +10,7 @@ export type FilterCategory = 'urgent' | 'important' | 'moderate' | 'low';
 export interface TaskDataType {
   title: string;
   summary: string;
-  category: string;
+  category: FilterCategory;
 }
 
 @Component({
@@ -28,8 +27,8 @@ export interface TaskDataType {
 })
 export class AppComponent implements OnInit {
   title = 'cypress-e2e-udemy';
-  tasks = signal<(TaskDataType & {id: string})[]>([]);
-  displayedTasks = signal<(TaskDataType & {id: string})[]>([]);
+  tasks = signal<(TaskDataType & { id: string })[]>([]);
+  displayedTasks = signal<(TaskDataType & { id: string })[]>([]);
   isAddingTask = signal<boolean>(true);
   appliedFilter = signal<FilterCategory | 'all'>('all');
 
@@ -46,7 +45,7 @@ export class AppComponent implements OnInit {
   }
 
   addTaskHandler(taskData: TaskDataType) {
-    this.tasks.update(prevTasks=>{
+    this.tasks.update(prevTasks => {
       return [
         ...prevTasks,
         {

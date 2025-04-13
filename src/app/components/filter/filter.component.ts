@@ -1,4 +1,4 @@
-import {Component, output, Output} from '@angular/core';
+import {Component, output} from '@angular/core';
 import {FilterCategory} from '../../app.component';
 
 @Component({
@@ -14,3 +14,4 @@ export class FilterComponent {
     this.filter.emit((event.target as HTMLSelectElement).value as FilterCategory);
   }
 }
+
