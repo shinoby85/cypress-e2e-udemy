@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
   title = 'cypress-e2e-udemy';
   tasks = signal<(TaskDataType & { id: string })[]>([]);
   displayedTasks = signal<(TaskDataType & { id: string })[]>([]);
-  isAddingTask = signal<boolean>(true);
+  isAddingTask = signal<boolean>(false);
   appliedFilter = signal<FilterCategory | 'all'>('all');
 
   startAddTaskHandler() {

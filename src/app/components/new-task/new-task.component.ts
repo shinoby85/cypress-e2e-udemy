@@ -1,6 +1,6 @@
 import {Component, output} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
-import {TaskDataType} from '../../app.component';
+import {FilterCategory, TaskDataType} from '../../app.component';
 
 @Component({
   selector: 'app-new-task',
@@ -27,7 +27,7 @@ export class NewTaskComponent {
 
     const enteredTitle = this.form.controls.title.value || '';
     const enteredSummary = this.form.controls.summary.value || '';
-    const chosenCategory = this.form.controls.category.value || '';
+    const chosenCategory = (this.form.controls.category.value as FilterCategory) || 'moderate';
 
     if (this.form.invalid) {
       return;

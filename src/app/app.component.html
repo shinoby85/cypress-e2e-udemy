@@ -1,14 +1,13 @@
 @if (isAddingTask()) {
-  <p>Test modal</p>
   <app-modal (close)="cancelAddTaskHandler()">
-    <app-new-task (addTask)="addTaskHandler($event)" (cancel)="cancelAddTaskHandler()" />
+    <app-new-task (addTask)="addTaskHandler($event)" (cancel)="cancelAddTaskHandler()"/>
   </app-modal>
 }
-<app-header />
+<app-header/>
 <main>
   <app-task-control
     (setAddTask)="startAddTaskHandler()"
     (setFilter)="setFilterHandler($event)"
   />
-  <app-task-list [tasks]="displayedTasks()" />
+  <app-task-list [tasks]="displayedTasks()"/>
 </main>
