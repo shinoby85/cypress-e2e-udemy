@@ -1,4 +1,4 @@
 <div id="task-control">
   <button (click)="setAddTask.emit()" data-cy="start-add-task-button">Add Task</button>
-  <app-filter (filter)="setFilter.emit()" />
+  <app-filter (filter)="setFilter.emit($event)" />
 </div>

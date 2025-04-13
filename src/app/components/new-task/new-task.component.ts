@@ -1,5 +1,6 @@
 import {Component, output} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {TaskDataType} from '../../app.component';
 
 @Component({
   selector: 'app-new-task',
@@ -10,7 +11,7 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/
   styleUrl: './new-task.component.css'
 })
 export class NewTaskComponent {
-  addTask = output<{title: string; summary: string; category: string;}>();
+  addTask = output<TaskDataType>();
   cancel = output();
 
   form = new FormGroup({
@@ -32,7 +33,7 @@ export class NewTaskComponent {
       return;
     }
 
-    const taskData = {
+    const taskData: TaskDataType = {
       title: enteredTitle,
       summary: enteredSummary,
       category: chosenCategory,

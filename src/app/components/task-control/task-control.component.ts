@@ -1,5 +1,6 @@
 import {Component, output} from '@angular/core';
 import {FilterComponent} from '../filter/filter.component';
+import {FilterCategory} from '../../app.component';
 
 @Component({
   selector: 'app-task-control',
@@ -11,5 +12,5 @@ import {FilterComponent} from '../filter/filter.component';
 })
 export class TaskControlComponent {
   setAddTask = output();
-  setFilter = output();
+  setFilter = output<FilterCategory>();
 }

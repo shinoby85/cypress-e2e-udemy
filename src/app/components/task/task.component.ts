@@ -1,10 +1,11 @@
 import {Component, input} from '@angular/core';
+import {FilterCategory} from '../../app.component';
 
 const CATEGORY_ICONS = {
   urgent: '🚨',
   important: '🔴',
   moderate: '🔵',
-  low: '🟢',
+  low: '🟢'
 };
 
 @Component({
@@ -14,8 +15,8 @@ const CATEGORY_ICONS = {
   styleUrl: './task.component.css'
 })
 export class TaskComponent {
-  categoryIcons = CATEGORY_ICONS;
-  category = input.required<string>();
+  categoryIcons: Record<FilterCategory, string> = CATEGORY_ICONS;
+  category = input.required<FilterCategory>();
   title = input.required<string>()
   summary = input.required<string>()
 }
