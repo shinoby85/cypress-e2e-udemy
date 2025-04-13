@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, output} from '@angular/core';
 
 @Component({
   selector: 'app-modal',
@@ -7,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrl: './modal.component.css'
 })
 export class ModalComponent {
+  close = output();
 
+  onClose() {
+    this.close.emit();
+  }
 }
