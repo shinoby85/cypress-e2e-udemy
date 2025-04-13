@@ -1,4 +1,4 @@
-import {Component, OnInit, signal} from '@angular/core';
+import {Component, effect, signal} from '@angular/core';
 import {HeaderComponent} from './components/header/header.component';
 import {TaskListComponent} from './components/task-list/task-list.component';
 import {TaskControlComponent} from './components/task-control/task-control.component';
@@ -25,12 +25,25 @@ export interface TaskDataType {
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'cypress-e2e-udemy';
   tasks = signal<(TaskDataType & { id: string })[]>([]);
   displayedTasks = signal<(TaskDataType & { id: string })[]>([]);
   isAddingTask = signal<boolean>(false);
   appliedFilter = signal<FilterCategory | 'all'>('all');
+
+  constructor() {
+    effect(() => {
+      const filteredTasks = this.tasks().filter((task) => {
+        if (this.appliedFilter() === 'all') {
+          return true;
+        }
+        return task.category === this.appliedFilter();
+
+      });
+      this.displayedTasks.set(filteredTasks);
+    });
+  }
 
   startAddTaskHandler() {
     this.isAddingTask.set(true);
@@ -55,17 +68,5 @@ export class AppComponent implements OnInit {
       ]
     })
     this.isAddingTask.set(false);
-  }
-
-  ngOnInit(): void {
-    this.displayedTasks.update(() => {
-      return this.tasks().filter((task) => {
-        if (this.appliedFilter() === 'all') {
-          return true;
-        }
-        return task.category === this.appliedFilter();
-
-      })
-    });
   }
 }

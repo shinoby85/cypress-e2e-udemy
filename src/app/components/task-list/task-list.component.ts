@@ -11,5 +11,5 @@ import {TaskDataType} from '../../app.component';
   styleUrl: './task-list.component.css'
 })
 export class TaskListComponent {
-  tasks = input<(TaskDataType & {id: string})[]>();
+  tasks = input<(TaskDataType & { id: string })[]>();
 }

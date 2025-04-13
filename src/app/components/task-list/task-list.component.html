@@ -1,5 +1,5 @@
 <ul class="task-list">
-  @for (task of tasks(); track task.id) {
+  @for (task of tasks; track task.id) {
     <app-task [category]="task.category" [title]="task.title" [summary]="task.summary"></app-task>
   } @empty {
     <p class="no-tasks">No tasks found!</p>
