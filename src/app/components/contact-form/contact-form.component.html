@@ -1,0 +1,48 @@
+<h2 class="center">Contact Us</h2>
+<form (ngSubmit)="submitHandler($event)" [formGroup]="form" class="form">
+  <p [class.invalid]="controlIsInvalid('message')">
+    <label for="message">Your Message</label>
+    <textarea
+      data-cy="contact-input-message"
+      formControlName="message"
+      id="message"
+      required
+      rows="5"
+    ></textarea>
+  </p>
+  <div class="row">
+    <p [class.invalid]="controlIsInvalid('name')">
+      <label for="name">Your Name</label>
+      <input
+        data-cy="contact-input-name"
+        formControlName="name"
+        id="name"
+        required
+        type="text"
+      />
+    </p>
+    <p [class.invalid]="controlIsInvalid('email')">
+      <label for="email">Your Email</label>
+      <input
+        data-cy="contact-input-email"
+        formControlName="email"
+        id="email"
+        required
+        type="email"
+      />
+    </p>
+  </div>
+  <p class="actions">
+    <button
+      [disabled]="isSubmitting()"
+      data-cy="contact-btn-submit"
+      type="submit"
+    >
+      @if (isSubmitting()) {
+        Sending...
+      } @else {
+        Send Message
+      }
+    </button>
+  </p>
+</form>
