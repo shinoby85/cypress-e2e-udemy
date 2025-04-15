@@ -33,4 +33,25 @@ describe('tasks management', () => {
     cy.get('.modal').contains('Add Task').click();
     cy.contains(errorMessage);
   });
+
+  it('should filter task', () => {
+    const testTitleText = 'New Title for task';
+    const testDescriptionText = 'New Description for task';
+    cy.visit('http://localhost:4200');
+    cy.get('[data-cy=start-add-task-button]').click();
+    cy.get('#title').type(testTitleText);
+    cy.get('#summary').type(testDescriptionText);
+    cy.get('#category').select('urgent');
+    cy.get('.modal').contains('Add Task').click();
+    cy.get('#filter').select('important');
+    cy.get('.task').should('have.length', 0);
+    cy.get('#filter').select('urgent');
+    cy.get('.task').should('have.length', 1);
+    cy.get('#filter').select('moderate');
+    cy.get('.task').should('have.length', 0);
+    cy.get('#filter').select('low');
+    cy.get('.task').should('have.length', 0);
+    cy.get('#filter').select('all');
+    cy.get('.task').should('have.length', 1);
+  });
 })
