@@ -54,4 +54,22 @@ describe('tasks management', () => {
     cy.get('#filter').select('all');
     cy.get('.task').should('have.length', 1);
   });
+
+  it('should add multiple tasks', () => {
+    const firstTitle = 'Task 1';
+    const secondTitle = 'Task 2';
+    const firstSummary = 'First task';
+    const secondSummary = 'Second task';
+    cy.visit('http://localhost:4200');
+    cy.get('[data-cy=start-add-task-button]').click();
+    cy.get('#title').type(firstTitle);
+    cy.get('#summary').type(firstSummary);
+    cy.get('.modal').contains('Add Task').click();
+    cy.get('[data-cy=start-add-task-button]').click();
+    cy.get('#title').type(secondTitle);
+    cy.get('#summary').type(secondSummary);
+    cy.get('.modal').contains('Add Task').click();
+    cy.get('.task').eq(0).contains(firstSummary);
+    cy.get('.task').eq(1).contains(secondSummary);
+  });
 })
