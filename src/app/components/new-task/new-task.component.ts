@@ -1,4 +1,4 @@
-import {Component, output} from '@angular/core';
+import {Component, output, signal} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {FilterCategory, TaskDataType} from '../../app.component';
 
@@ -13,6 +13,7 @@ import {FilterCategory, TaskDataType} from '../../app.component';
 export class NewTaskComponent {
   addTask = output<TaskDataType>();
   cancel = output();
+  invalidForm = signal(false);
 
   form = new FormGroup({
     title: new FormControl("", {
@@ -30,6 +31,7 @@ export class NewTaskComponent {
     const chosenCategory = (this.form.controls.category.value as FilterCategory) || 'moderate';
 
     if (this.form.invalid) {
+      this.invalidForm.set(true);
       return;
     }
 

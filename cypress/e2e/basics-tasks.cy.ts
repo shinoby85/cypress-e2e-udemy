@@ -25,4 +25,12 @@ describe('tasks management', () => {
     cy.get('.task h2').contains(testTitleText);
     cy.get('.task p').contains(testDescriptionText);
   });
+
+  it('should validate user input', () => {
+    const errorMessage = 'Please provide values for task title, summary and category!';
+    cy.visit('http://localhost:4200');
+    cy.get('[data-cy=start-add-task-button]').click();
+    cy.get('.modal').contains('Add Task').click();
+    cy.contains(errorMessage);
+  });
 })

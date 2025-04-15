@@ -1,28 +1,28 @@
-<form id="new-task-form" [formGroup]="form" (submit)="submitHandler($event)">
+<form (submit)="submitHandler($event)" [formGroup]="form" id="new-task-form">
   <p>
     <label for="title">Title</label>
-    <input type="text" id="title" formControlName="title" />
+    <input formControlName="title" id="title" type="text"/>
   </p>
   <p>
     <label for="summary">Summary</label>
-    <textarea id="summary" rows="5" formControlName="summary"></textarea>
+    <textarea formControlName="summary" id="summary" rows="5"></textarea>
   </p>
   <p>
     <label for="category">Category</label>
-    <select id="category" formControlName="category">
+    <select formControlName="category" id="category">
       <option value="urgent">🚨 Urgent</option>
       <option value="important">🔴 Important</option>
       <option value="moderate">🔵 Moderate</option>
       <option value="low">🟢 Low</option>
     </select>
   </p>
-  @if (form.invalid){
+  @if (invalidForm()) {
     <p class="error-message">
       Please provide values for task title, summary and category!
     </p>
   }
   <p class="actions">
-    <button type="button" (click)="cancel.emit()">Cancel</button>
+    <button (click)="cancel.emit()" type="button">Cancel</button>
     <button type="submit">Add Task</button>
   </p>
 </form>
