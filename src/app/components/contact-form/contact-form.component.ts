@@ -60,7 +60,7 @@ export class ContactFormComponent {
 
   controlIsInvalid(controlName: 'message' | 'name' | 'email'): boolean {
     return this.form.controls[controlName].touched &&
-      this.form.controls[controlName].dirty &&
+      this.form.controls[controlName].pristine &&
       this.form.controls[controlName].invalid;
   }
 }
