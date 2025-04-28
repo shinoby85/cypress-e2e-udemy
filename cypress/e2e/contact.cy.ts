@@ -4,11 +4,12 @@ describe('contact form', () => {
     cy.visit('http://localhost:4200/about');
     cy.get('[data-cy="contact-input-message"').type('Hello World');
     cy.get('[data-cy="contact-input-name"]').type('John Doe');
-    cy.get('[data-cy="contact-input-email"]').type('test@example.com');
     cy.get('[data-cy="contact-btn-submit"]').then(el => {
       expect(el.attr('disabled')).to.be.undefined;
       expect(el.text().trim()).to.eq('Send Message');
-    })
+    });
+    cy.get('[data-cy="contact-input-email"]').type('test@example.com{enter}');
+
     // cy.get(submitBtn).contains('Send Message');
     // cy.get(submitBtn).should('not.have.attr', 'disabled');
     // cy.get(submitBtn).click();
