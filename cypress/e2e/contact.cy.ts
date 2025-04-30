@@ -32,17 +32,21 @@ describe('contact form', () => {
       expect(element.text()).to.not.eq('Sending...');
     });
     cy.get('[data-cy="contact-btn-submit"]').contains(' Send Message ');
-    cy.get('[data-cy="contact-input-message"').focus().blur();
-    cy.get('[data-cy="contact-input-message"').parent().then(element => {
+    cy.get('[data-cy="contact-input-message"]').focus().blur();
+    cy.get('[data-cy="contact-input-message"]').parent().then(element => {
       expect(element.attr('class')).to.contain('invalid');
     });
-    cy.get('[data-cy="contact-input-name"').focus().blur();
-    cy.get('[data-cy="contact-input-name"').parent().then(element => {
+    cy.get('[data-cy="contact-input-name"]').focus().blur();
+    cy.get('[data-cy="contact-input-name"]').parent().then(element => {
       expect(element.attr('class')).to.contain('invalid');
     });
     cy.get('[data-cy="contact-input-email"').focus().blur();
-    cy.get('[data-cy="contact-input-email"').parent().then(element => {
-      expect(element.attr('class')).to.contain('invalid');
-    });
+    // cy.get('[data-cy="contact-input-email"]').parent().then(element => {
+    //   expect(element.attr('class')).to.contain('invalid');
+    // });
+    cy.get('[data-cy="contact-input-email"]')
+      .parent()
+      .should('have.attr', 'class')
+      .and('match', /invalid/);
   });
 })
