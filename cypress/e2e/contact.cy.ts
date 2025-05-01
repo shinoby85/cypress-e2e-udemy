@@ -1,7 +1,9 @@
 describe('contact form', () => {
+  beforeEach(()=>{
+    cy.visit('/about');
+  })
   it('should submit the form', () => {
     // const submitBtn = '[data-cy="contact-btn-submit"]';
-    cy.visit('/about');
     cy.get('[data-cy="contact-input-message"').type('Hello World');
     cy.get('[data-cy="contact-input-name"]').type('John Doe');
     cy.get('[data-cy="contact-btn-submit"]').then(el => {
@@ -25,7 +27,6 @@ describe('contact form', () => {
   })
 
   it('should validate the form input', () => {
-    cy.visit('/about');
     cy.get('[data-cy="contact-btn-submit"]').click();
     cy.get('[data-cy="contact-btn-submit"]').then(element => {
       expect(element).to.not.have.attr('disabled');
