@@ -3,6 +3,9 @@ describe('contact form', () => {
     cy.visit('/about');
   })
   it('should submit the form', () => {
+    cy.task('seedDatabase', 'filename.csv').then(returnValue => {
+      // Runs after all tests in the block
+    })
     // const submitBtn = '[data-cy="contact-btn-submit"]';
     // cy.get('[data-cy="contact-input-message"').type('Hello World');
     cy.getById('contact-input-message').type('Hello World');
