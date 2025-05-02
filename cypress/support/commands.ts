@@ -35,3 +35,6 @@
 //     }
 //   }
 // }
+Cypress.Commands.add('submitForm', () => {
+  cy.get('[data-cy="contact-btn-submit"]').click();
+})

@@ -1,5 +1,5 @@
 describe('contact form', () => {
-  beforeEach(()=>{
+  beforeEach(() => {
     cy.visit('/about');
   })
   it('should submit the form', () => {
@@ -20,14 +20,14 @@ describe('contact form', () => {
     cy.get('[data-cy="contact-btn-submit"]').as('submitBtn');
     cy.get('@submitBtn').contains(' Send Message ');
     cy.get('@submitBtn').should('not.have.attr', 'disabled');
-    cy.get('@submitBtn').click();
+    cy.submitForm();
     cy.get('@submitBtn').contains('Sending...');
     cy.get('@submitBtn').should('have.attr', 'disabled');
 
   })
 
   it('should validate the form input', () => {
-    cy.get('[data-cy="contact-btn-submit"]').click();
+    cy.submitForm();
     cy.get('[data-cy="contact-btn-submit"]').then(element => {
       expect(element).to.not.have.attr('disabled');
       expect(element.text()).to.not.eq('Sending...');
