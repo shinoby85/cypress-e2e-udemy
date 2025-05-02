@@ -4,8 +4,10 @@ describe('contact form', () => {
   })
   it('should submit the form', () => {
     // const submitBtn = '[data-cy="contact-btn-submit"]';
-    cy.get('[data-cy="contact-input-message"').type('Hello World');
-    cy.get('[data-cy="contact-input-name"]').type('John Doe');
+    // cy.get('[data-cy="contact-input-message"').type('Hello World');
+    cy.getById('contact-input-message').type('Hello World');
+    // cy.get('[data-cy="contact-input-name"]').type('John Doe');
+    cy.getById('contact-input-name').type('John Doe');
     cy.get('[data-cy="contact-btn-submit"]').then(el => {
       expect(el.attr('disabled')).to.be.undefined;
       expect(el.text().trim()).to.eq('Send Message');
