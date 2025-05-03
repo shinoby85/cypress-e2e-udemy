@@ -1,13 +1,17 @@
 <main>
   <h1>SnapLocation</h1>
-  <form appElListener appElListenerErr="error">
+  <form (ngSubmit)="shareLocation($event)">
     <p>
       <label for="name">Your name</label>
       <input data-cy="name-input" id="name" name="name" type="text"/>
     </p>
     <p class="actions" data-cy="actions">
-      <button appElListener appElListenerErr="error" class="active" data-cy="get-loc-btn" id="get-location"
-              type="button">
+      <button
+        (click)="getUserLocation($event)"
+        class="active"
+        data-cy="get-loc-btn"
+        id="get-location"
+        type="button">
         Get Location
       </button>
       <span class="icon">
