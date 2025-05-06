@@ -41,3 +41,6 @@ testem.log
 package-lock.json
 .DS_Store
 Thumbs.db
+/.cache/content-v2/sha512/3d/11/aa3d7e3c0814429be5222e84f3cad0e5ec747dcabea6bc6db87af141f3f4507358f0214b3269a19e5ef4c4a41096b7f11f813b115ebbe30aa1394a86db9d
+/.cache/
+/build/
