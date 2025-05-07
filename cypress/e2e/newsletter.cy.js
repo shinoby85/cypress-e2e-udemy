@@ -21,4 +21,15 @@
      cy.wait('@subscribe');
      cy.contains(httpErrorMessage);
    });
+
+   it('should successfully create a new contact', () => {
+     cy.request({
+       method: 'POST',
+       url: '/newsletter',
+       body: {email: 'test@example.com'},
+       form: true
+     }).then(resp=>{
+       expect(resp.status).to.eq(201);
+     })
+   });
  })
